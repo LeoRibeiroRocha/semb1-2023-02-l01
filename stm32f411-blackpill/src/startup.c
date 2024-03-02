@@ -1,3 +1,4 @@
+
 /****************************************************************************
  * main.c
  *
@@ -40,6 +41,21 @@ void svc_handler       (void) __attribute__ ((weak, alias("default_handler")));
 void debugmon_handler  (void) __attribute__ ((weak, alias("default_handler")));
 void pendsv_handler    (void) __attribute__ ((weak, alias("default_handler")));
 void systick_handler   (void) __attribute__ ((weak, alias("default_handler")));
+void wwwg_handler      (void) __attribute__ ((weak, alias("default_handler")));
+void pvd_handler       (void) __attribute__ ((weak, alias("default_handler")));
+void tamper_stamp_handler   (void) __attribute__ ((weak, alias("default_handler")));
+void rtc_wkup_handler  (void) __attribute__ ((weak, alias("default_handler")));
+void flash_handler     (void) __attribute__ ((weak, alias("default_handler")));
+void rcc_handler       (void) __attribute__ ((weak, alias("default_handler")));
+void exti0_handler     (void) __attribute__ ((weak, alias("default_handler")));
+void exti1_handler     (void) __attribute__ ((weak, alias("default_handler")));
+void exti2_handler     (void) __attribute__ ((weak, alias("default_handler")));
+void exti3_handler     (void) __attribute__ ((weak, alias("default_handler")));
+void exti4_handler     (void) __attribute__ ((weak, alias("default_handler")));
+void dma1_stram0_handler    (void) __attribute__ ((weak, alias("default_handler")));
+void dma1_stram1_handler    (void) __attribute__ ((weak, alias("default_handler")));
+void dma1_stram2_handler    (void) __attribute__ ((weak, alias("default_handler")));
+void dma1_stram3_handler    (void) __attribute__ ((weak, alias("default_handler")));
 
  /****************************************************************************
  * External Data
@@ -78,6 +94,21 @@ uint32_t vectors[] __attribute__((section(".isr_vectors"))) =
   0,                                      /* 0x0000 0034 */
   (uint32_t)pendsv_handler,               /* 0x0000 0038 */
   (uint32_t)systick_handler,              /* 0x0000 003c */
+  (uint32_t)wwwg_handler,                 /* 0x0000 0040 */
+  (uint32_t)pvd_handler,                  /* 0x0000 0044 */
+  (uint32_t)tamper_stamp_handler,         /* 0x0000 0048 */
+  (uint32_t)rtc_wkup_handler,             /* 0x0000 004c */
+  (uint32_t)flash_handler,                /* 0x0000 0050 */
+  (uint32_t)rcc_handler,                  /* 0x0000 0054 */
+  (uint32_t)exti0_handler,                /* 0x0000 0058 */
+  (uint32_t)exti1_handler,                /* 0x0000 005c */
+  (uint32_t)exti2_handler,                /* 0x0000 0060 */
+  (uint32_t)exti3_handler,                /* 0x0000 0064 */
+  (uint32_t)exti4_handler,                /* 0x0000 0068 */
+  (uint32_t)dma1_stram0_handler,          /* 0x0000 006c */
+  (uint32_t)dma1_stram1_handler,          /* 0x0000 0070 */
+  (uint32_t)dma1_stram2_handler,          /* 0x0000 0074 */
+  (uint32_t)dma1_stram3_handler,          /* 0x0000 0078 */
 };
 
 /****************************************************************************
