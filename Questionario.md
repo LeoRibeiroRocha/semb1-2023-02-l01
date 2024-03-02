@@ -1,36 +1,75 @@
 # Questionário Sistemas Embarcados I
 
 ## 1. Explique brevemente o que é compilação cruzada (***cross-compiling***) e para que ela serve.
-
+   Compilação cruzada (Cross Compiling): É o processo de compilar o código para que rode em uma plataforma diferente da que está sendo desenvolvida, sendo útil para criar software de diferentes dispositivos ou sistemas com arquiteturas diferentes, economizando tempo e recurso.
+   
 ## 2. O que é um código de inicialização ou ***startup*** e qual sua finalidade?
-
+   O código startup é um conjunto de instruções básicas que são executadas quando um sistema é ligado ou um programa é iniciado. Ele é responsável por configurar o hardware e preparar o sistema para a execução do software.
+   
 ## 3. Sobre o utilitário **make** e o arquivo **Makefile responda**:
-
+   
 #### (a) Explique com suas palavras o que é e para que serve o **Makefile**.
+   Makefile -> arquivo de configuração utilizado para automatizar a compilação de programas definindo regras para compilar e gerenciando dependências entre os componentes do projeto. Em suma, o Makefile simplifica o processo de compilação e execução de projetos de software.
 
 #### (b) Descreva brevemente o processo realizado pelo utilitário **make** para compilar um programa.
+   O Make usa um arquivo Makefile para automatizar o processo de compilação de um programa. A descrição do processo seria:
+- Make lê o Makefile (que determina as regras de compilação e dependências)
+- Make identifica arquivos executáveis ou outros artefatos localizados no Makefile
+- Make verifica se os arquivos de origem foram modificados desde a última compilação
+- Make executa as regras do Makefile para gerar os arquivos objeto ou executáveis
+- Make atualiza os arquivos se necessário, garantindo que sempre estejam em sua versão mais atual
+Make então garante que somente arquivos relevantes sejam compilados e que rode corretamente.
 
 #### (c) Qual é a sintaxe utilizada para criar um novo **target**?
+   alvo: dependência
+       Comandos
+
+meu_programa: main.c funcoes.c
+gcc -o meu_programa main.c funcoes.c
+
+gcc -> utilizado para compilar os arquivos e gerar um executável, nesse caso chamado de "meu_programa".
 
 #### (d) Como são definidas as dependências de um **target**, para que elas são utilizadas?
+   São definidas listando os arquivos ou outros alvos dos quais o alvo depende, dependências essas que determinam pelo Make se o target precisa ser reconstruído.
 
 #### (e) O que são as regras do **Makefile**, qual a diferença entre regras implícitas e explícitas?
+   Regras do Makefile definem como os target's são construídos a partir de suas dependências, sendo as regras implícitas definidas e aplicadas automaticamente pelo Make, enquanto as explicitas são definidas pelo usuário.
 
 ## 4. Sobre a arquitetura **ARM Cortex-M** responda:
 
 ### (a) Explique o conjunto de instruções ***Thumb*** e suas principais vantagens na arquitetura ARM. Como o conjunto de instruções ***Thumb*** opera em conjunto com o conjunto de instruções ARM?
+   Thumb é uma extensão do conjunto ARM e oferece maior eficiência de código e economia de espaço assim como de energ. Estando no modo thumb, há a possibilidade de alternar para ARM e essa flexibilidade permite que o desempenho e tamanho do código sejam mais otimizados, utilizando das instruções que forem mais adequadas.
+ARM -> Alta performance, partes mais críticas.
+Thumb -> Maior economia de espaço, partes menos críticas.
 
 ### (b) Explique as diferenças entre as arquiteturas ***ARM Load/Store*** e ***Register/Register***.
+   A Load/Store acessa diretamente a memória, carregando e armazenando dados.
+   A Register/Memory não tem acesso direto a memória para operações aritméticas, porém tem suas ações realizadas entre registradores internos.
 
 ### (c) Os processadores **ARM Cortex-M** oferecem diversos recursos que podem ser explorados por sistemas baseados em **RTOS** (***Real Time Operating Systems***). Por exemplo, a separação da execução do código em níveis de acesso e diferentes modos de operação. Explique detalhadamente como funciona os níveis de acesso de execução de código e os modos de operação nos processadores **ARM Cortex-M**.
+   Há dois tipos de nível de acesso de execução de código, sendo eles o Modo Privilegiado e o Não Privilegiado.
+Em suma, o Modo Privilegiado tem acesso total aos recursos do sistema e o Não Privilegiado tem um acesso mais restrito.
+Já no modo de operação há o Modo de Manipulador (lida com interrupções e exceções) e o Modo de Thread (execução de código de usuário). Todos esses recursos tem como função deixar o ambiente flexível para os sistemas, permitindo maior controle sobre o acesso ao hardware e a execução de tarefas em tempo real.
 
 ### (d) Explique como os processadores ARM tratam as exceções e as interrupções. Quais são os diferentes tipos de exceção e como elas são priorizadas? Descreva a estratégia de **group priority** e **sub-priority** presente nesse processo.
+   O ARM utiliza de seu mecanismo de vetores de exceção e prioridade de interrupção.
+Tipos de exceções: 
+-Reiniciar
+-Interrupção externa
+-Falha de instrução
+-Interrupção de sistema
+-Interrupção de software
+e etc.
+O processador tende a atender primeiro as exceções de maior prioridade definidos pelo próprio sistema operacional ou pelo firmware.
 
 ### (e) Qual a diferença entre os registradores **CPSR** (***Current Program Status Register***) e **SPSR** (***Saved Program Status Register***)?
+   O SPSR é usado para salvar temporariamente o estado do CPSR durante o tratamento de exceções ou interrupções, o que garante que o processador consiga retornar ao estado anterior corretamente. Já o CPSR se trata de um registrador que contém o estado atual do processador durante a execução do programa.
 
 ### (f) Qual a finalidade do **LR** (***Link Register***)?
+   O LR é um registrador que permite com que o programa retorne ao ponto de origem após a conclusão da sub-rotina ou função, voltando ao seu ponto de origem utilizando o endereço armazenado no LR, garantindo com que o prograna funcione normalmente após a execução dessas chamadas sub-rotinas.
 
 ### (g) Qual o propósito do Program Status Register (PSR) nos processadores ARM?
+   
 
 ### (h) O que é a tabela de vetores de interrupção?
 
